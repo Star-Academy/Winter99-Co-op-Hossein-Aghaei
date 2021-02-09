@@ -10,7 +10,7 @@ public final class FileReader {
 
     public FileReader(){
         docs = new HashMap<>();
-        fillList = new File("C:\\Users\\hos3in\\Desktop\\phase02-code review\\EnglishData").listFiles();
+        fillList = new File("..\\EnglishData").listFiles();
         scanDocs();
     }
 
