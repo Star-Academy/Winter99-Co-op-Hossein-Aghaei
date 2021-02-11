@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Processor {
     private static Processor instance;
     private final FileReader fileReader;
-    private final HashInvertedIndex hashInvertedIndex;
+    private final InvertedIndex hashInvertedIndex;
     private final ConsoleView consoleView;
     private ArrayList<String> withoutSignDocs;
     private ArrayList<String> plusDocs;

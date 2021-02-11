@@ -12,17 +12,17 @@ public class HashInvertedIndex implements InvertedIndex{
         words = new HashMap<>();
         porterStemmer = new PorterStemmer();
         fileReader = FileReader.getInstance();
-        organize();
+        organizeDocsAndWords();
     }
 
-    public void organize() {
+    public void organizeDocsAndWords() {
         HashMap<String, String> docs = fileReader.getDocs();
         for (final String doc : docs.keySet()) {
-            query(doc, docs.get(doc));
+            queryOnDocsAndWords(doc, docs.get(doc));
         }
     }
 
-    private void query(final String docName, final String content) {
+    private void queryOnDocsAndWords(final String docName, final String content) {
         String[] splitContent = content.split("[\\W]+");
         for (final String word : splitContent) {
             String stemWord = porterStemmer.stem(word);

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public interface InvertedIndex {
-    void organize();
+    void organizeDocsAndWords();
     boolean allWordsContain(final String word);
     ArrayList<String> getDocsContain(final String word);
 }
