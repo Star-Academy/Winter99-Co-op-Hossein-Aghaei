@@ -3,28 +3,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleView implements View{
-    private static ConsoleView instance;
-    private final Processor processor;
-    private final PorterStemmer porterStemmer;
-    private final Scanner scanner;
-    private final ArrayList<String> withoutSignWords;
-    private final ArrayList<String> plusWords;
-    private final ArrayList<String> minusWords;
+    private static ConsoleView instance = ConsoleView.getInstance();
+    private final Processor processor = Processor.getInstance();
+    private final InputDocs inputDocs = InputDocs.getInstance();
+    private final PorterStemmer porterStemmer = new PorterStemmer();
 
-    public ConsoleView(){
-        instance = this;
-        processor = Processor.getInstance();
-        porterStemmer = new PorterStemmer();
-        scanner = new Scanner(System.in);
-        withoutSignWords = new ArrayList<>();
-        plusWords = new ArrayList<>();
-        minusWords = new ArrayList<>();
-
-    }
-
+    @Override
     public void run() {
         scanInput();
-        ArrayList<String> finalSet = new ArrayList<>(processor.getFinalSet());
+        showResult(processor.getFinalSet());
+    }
+
+    @Override
+    public void showResult(final ArrayList<String> finalSet) {
         if (finalSet.isEmpty())
             System.out.println("No Match Found!");
         else {
@@ -34,30 +25,30 @@ public class ConsoleView implements View{
         }
     }
 
-    private void scanInput() {
+    @Override
+    public void scanInput() {
         System.out.println("Enter your sentence to search!");
-        String search = scanner.nextLine().toLowerCase();
-        String[] splitInput = search.split("\\s");
-        for (final String word : splitInput) {
+        Scanner scanner = new Scanner(System.in);
+        String sentenceToSearch = scanner.nextLine().toLowerCase();
+        splitSearchKeyIntoDocs(sentenceToSearch.split("\\s"));
+    }
+
+    @Override
+    public void splitSearchKeyIntoDocs(String[] sentenceToSearch) {
+        ArrayList<String> noSignWords = new ArrayList<>();
+        ArrayList<String> plusWords = new ArrayList<>();
+        ArrayList<String> minusWords = new ArrayList<>();
+        for (final String word : sentenceToSearch) {
             if (word.startsWith("+"))
                 plusWords.add(porterStemmer.stem(word.replace("+", "")));
             else if (word.startsWith("-"))
                 minusWords.add(porterStemmer.stem(word.replace("-", "")));
             else
-                withoutSignWords.add(porterStemmer.stem(word));
+                noSignWords.add(porterStemmer.stem(word));
         }
-    }
-
-    public ArrayList<String> getPlusWords() {
-        return plusWords;
-    }
-
-    public ArrayList<String> getMinusWords() {
-        return minusWords;
-    }
-
-    public ArrayList<String> getWithoutSignWords() {
-        return withoutSignWords;
+        inputDocs.setNoSignDocs(noSignWords);
+        inputDocs.setPlusDocs(plusWords);
+        inputDocs.setMinusDocs(minusWords);
     }
 
     public static ConsoleView getInstance() {

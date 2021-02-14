@@ -2,23 +2,23 @@ import opennlp.tools.stemmer.PorterStemmer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HashInvertedIndex implements InvertedIndex{
+public class HashInvertedIndex implements InvertedIndex {
     private static HashInvertedIndex instance;
-    private final HashMap<String, ArrayList<String>> words;
-    private final PorterStemmer porterStemmer;
-    private final FileReader fileReader;
-
-    public HashInvertedIndex() {
-        words = new HashMap<>();
-        porterStemmer = new PorterStemmer();
-        fileReader = FileReader.getInstance();
-        organizeDocsAndWords();
-    }
+    private final HashMap<String, ArrayList<String>> words = new HashMap<>();
+    private final PorterStemmer porterStemmer = new PorterStemmer();
+    private final InputDocs inputDocs = InputDocs.getInstance();
+    private final Object organizeLock = new Object();
 
     public void organizeDocsAndWords() {
-        HashMap<String, String> docs = fileReader.getDocs();
-        for (final String doc : docs.keySet()) {
-            queryOnDocsAndWords(doc, docs.get(doc));
+        if (words.isEmpty()) {
+            synchronized (organizeLock) {
+                if (words.isEmpty()) {
+                    HashMap<String, String> docs = inputDocs.getAllDocs(inputDocs.getDocsDirectoryFile().listFiles());
+                    for (final String doc : docs.keySet()) {
+                        queryOnDocsAndWords(doc, docs.get(doc));
+                    }
+                }
+            }
         }
     }
 

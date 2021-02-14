@@ -3,19 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public final class FileReader {
-    private static FileReader instance;
-    private final HashMap<String, String> docs;
-    private final File[] fillList;
+public final class DocsFileReader {
+    private static DocsFileReader instance;
 
-    public FileReader(){
-        docs = new HashMap<>();
-        fillList = new File("..\\EnglishData").listFiles();
-        scanDocs();
-    }
-
-    public void scanDocs(){
-        for (final File doc : fillList) {
+    public HashMap<String, String> scanDocs(final File[] fileList) {
+        HashMap<String, String> docs = new HashMap<>();
+        for (final File doc : fileList) {
             try {
                 Scanner fileReader = new Scanner(doc);
                 if (fileReader.hasNext())
@@ -24,15 +17,13 @@ public final class FileReader {
                 System.out.println("An unknown error occurred in reading data");
             }
         }
-    }
-
-    public HashMap<String, String> getDocs() {
         return docs;
     }
 
-    public static FileReader getInstance() {
+    public static DocsFileReader getInstance() {
         if (instance == null)
-            instance = new FileReader();
+            instance = new DocsFileReader();
         return instance;
     }
+
 }
