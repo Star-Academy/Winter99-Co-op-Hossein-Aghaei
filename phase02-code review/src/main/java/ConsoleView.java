@@ -3,15 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleView implements View {
-    private final Processor processor = new Processor();
     private final PorterStemmer porterStemmer = new PorterStemmer();
-
-    @Override
-    public void run() {
-        String sentence = scanInput();
-        ArrayList<ArrayList<String>> allDocs = splitSearchKeyIntoDocs(sentence);
-        showResult(processor.search(allDocs));
-    }
 
     @Override
     public void showResult(final ArrayList<String> finalSet) {

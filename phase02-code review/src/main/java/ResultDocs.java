@@ -19,7 +19,6 @@ public class ResultDocs implements Docs {
 
     @Override
     public void setNoSignDocs(ArrayList<String> noSignWords) {
-        hashInvertedIndex.organizeDocsAndWords();
         if (noSignDocs.isEmpty()){
             ArrayList<String> docs = checkFirstNoSignWord(noSignWords);
             for (int i = 1; i < noSignWords.size(); i++)
@@ -49,13 +48,13 @@ public class ResultDocs implements Docs {
 
     @Override
     public void setPlusDocs(ArrayList<String> plusWords) {
-        if (plusDocs.isEmpty()) {
-            ArrayList<String> docs = new ArrayList<>();
-            for (final String word : plusWords)
-                if (hashInvertedIndex.contain(word))
-                    docs.addAll(hashInvertedIndex.getDocsContain(word));
-            plusDocs = docs;
-        }
+        if (!plusDocs.isEmpty())
+            return;
+        ArrayList<String> docs = new ArrayList<>();
+        for (final String word : plusWords)
+            if (hashInvertedIndex.contain(word))
+                docs.addAll(hashInvertedIndex.getDocsContain(word));
+        plusDocs = docs;
     }
 
     @Override
@@ -72,17 +71,5 @@ public class ResultDocs implements Docs {
                     docs.removeAll(hashInvertedIndex.getDocsContain(word));
             minusDocs = docs;
         }
-    }
-
-    public ArrayList<String> getInitialFinalSet(ArrayList<String> noSignWords, ArrayList<String> plusSignWords) {
-        ArrayList<String> initialFinalSet = new ArrayList<>();
-        if (noSignWords.isEmpty())
-            if (plusSignWords.isEmpty())
-                initialFinalSet.addAll(getMinusDocs());
-            else
-                initialFinalSet.addAll(getPlusDocs());
-        else
-            initialFinalSet.addAll(getNoSignDocs());
-        return initialFinalSet;
     }
 }
