@@ -1,4 +1,5 @@
 import opennlp.tools.stemmer.PorterStemmer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,13 +14,13 @@ public class HashInvertedIndex implements InvertedIndex {
     }
 
     public void organizeDocsAndWords() {
-        if (words.isEmpty()) {
-            synchronized (organizeLock) {
-                if (words.isEmpty()) {
-                    HashMap<String, String> docs = docsFileReader.scanDocs();
-                    for (final String doc : docs.keySet())
-                        queryOnDocsAndWords(doc, docs.get(doc));
-                }
+        if (!words.isEmpty())
+            return;
+        synchronized (organizeLock) {
+            if (words.isEmpty()) {
+                HashMap<String, String> docs = docsFileReader.scanDocs();
+                for (final String doc : docs.keySet())
+                    queryOnDocsAndWords(doc, docs.get(doc));
             }
         }
     }
@@ -28,7 +29,7 @@ public class HashInvertedIndex implements InvertedIndex {
         String[] splitContent = content.split("[\\W]+");
         for (final String word : splitContent) {
             String stemWord = porterStemmer.stem(word);
-            if (allWordsContain(stemWord)) {
+            if (contain(stemWord)) {
                 ArrayList<String> container = words.get(stemWord);
                 if (!container.contains(docName))
                     container.add(docName);
@@ -40,7 +41,7 @@ public class HashInvertedIndex implements InvertedIndex {
         }
     }
 
-    public boolean allWordsContain(final String word) {
+    public boolean contain(final String word) {
         return words.containsKey(word);
     }
 

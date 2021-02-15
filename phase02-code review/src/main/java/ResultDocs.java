@@ -23,7 +23,7 @@ public class ResultDocs implements Docs {
         if (noSignDocs.isEmpty()){
             ArrayList<String> docs = checkFirstNoSignWord(noSignWords);
             for (int i = 1; i < noSignWords.size(); i++)
-                if (hashInvertedIndex.allWordsContain(noSignWords.get(i))) {
+                if (hashInvertedIndex.contain(noSignWords.get(i))) {
                     ArrayList<String> docsOfWord = new ArrayList<>(hashInvertedIndex.getDocsContain(noSignWords.get(i)));
                     docs.removeIf(doc -> !docsOfWord.contains(doc));
                 } else {
@@ -37,7 +37,7 @@ public class ResultDocs implements Docs {
     private ArrayList<String> checkFirstNoSignWord(final ArrayList<String> noSignWords) {
         ArrayList<String> docs = new ArrayList<>();
         if (!noSignWords.isEmpty())
-            if (hashInvertedIndex.allWordsContain(noSignWords.get(0)))
+            if (hashInvertedIndex.contain(noSignWords.get(0)))
                 docs.addAll(hashInvertedIndex.getDocsContain(noSignWords.get(0)));
         return docs;
     }
@@ -52,7 +52,7 @@ public class ResultDocs implements Docs {
         if (plusDocs.isEmpty()) {
             ArrayList<String> docs = new ArrayList<>();
             for (final String word : plusWords)
-                if (hashInvertedIndex.allWordsContain(word))
+                if (hashInvertedIndex.contain(word))
                     docs.addAll(hashInvertedIndex.getDocsContain(word));
             plusDocs = docs;
         }
@@ -68,7 +68,7 @@ public class ResultDocs implements Docs {
         if (minusDocs.isEmpty()) {
             ArrayList<String> docs = new ArrayList<>(docsFileReader.scanDocs().keySet());
             for (final String word : minusWords)
-                if (hashInvertedIndex.allWordsContain(word))
+                if (hashInvertedIndex.contain(word))
                     docs.removeAll(hashInvertedIndex.getDocsContain(word));
             minusDocs = docs;
         }
