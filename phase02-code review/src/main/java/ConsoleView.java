@@ -2,43 +2,43 @@ import opennlp.tools.stemmer.PorterStemmer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ConsoleView implements View{
-    private static ConsoleView instance = ConsoleView.getInstance();
-    private final Processor processor = Processor.getInstance();
-    private final InputDocs inputDocs = InputDocs.getInstance();
+public class ConsoleView implements View {
+    private final Processor processor = new Processor();
     private final PorterStemmer porterStemmer = new PorterStemmer();
 
     @Override
     public void run() {
-        scanInput();
-        showResult(processor.getFinalSet());
+        String sentence = scanInput();
+        ArrayList<ArrayList<String>> allDocs = splitSearchKeyIntoDocs(sentence);
+        showResult(processor.search(allDocs));
     }
 
     @Override
     public void showResult(final ArrayList<String> finalSet) {
-        if (finalSet.isEmpty())
+        if (finalSet.isEmpty()) {
             System.out.println("No Match Found!");
-        else {
-            System.out.println("Total number of Docs is : " + finalSet.size());
-            for (final String doc : finalSet)
-                System.out.println(doc);
+            return;
         }
+        System.out.println("Total number of Docs is : " + finalSet.size());
+        for (final String doc : finalSet)
+            System.out.println(doc);
+
     }
 
     @Override
-    public void scanInput() {
+    public String scanInput() {
         System.out.println("Enter your sentence to search!");
         Scanner scanner = new Scanner(System.in);
-        String sentenceToSearch = scanner.nextLine().toLowerCase();
-        splitSearchKeyIntoDocs(sentenceToSearch.split("\\s"));
+        return scanner.nextLine().toLowerCase();
     }
 
     @Override
-    public void splitSearchKeyIntoDocs(String[] sentenceToSearch) {
+    public ArrayList<ArrayList<String>> splitSearchKeyIntoDocs(String sentenceToSearch) {
+        ArrayList<ArrayList<String>> allDocs = new ArrayList<>();
         ArrayList<String> noSignWords = new ArrayList<>();
         ArrayList<String> plusWords = new ArrayList<>();
         ArrayList<String> minusWords = new ArrayList<>();
-        for (final String word : sentenceToSearch) {
+        for (final String word : sentenceToSearch.split("\\s")) {
             if (word.startsWith("+"))
                 plusWords.add(porterStemmer.stem(word.replace("+", "")));
             else if (word.startsWith("-"))
@@ -46,14 +46,9 @@ public class ConsoleView implements View{
             else
                 noSignWords.add(porterStemmer.stem(word));
         }
-        inputDocs.setNoSignDocs(noSignWords);
-        inputDocs.setPlusDocs(plusWords);
-        inputDocs.setMinusDocs(minusWords);
-    }
-
-    public static ConsoleView getInstance() {
-        if (instance == null)
-            instance = new ConsoleView();
-        return instance;
+        allDocs.add(noSignWords);
+        allDocs.add(plusWords);
+        allDocs.add(minusWords);
+        return allDocs;
     }
 }

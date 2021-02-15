@@ -1,28 +1,17 @@
 import org.junit.*;
-
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class DocsFileReaderTest {
 
-/*
+    private DocsFileReader docsFileReader;
     @Before
     public void setUp(){
-        docsFileReader = new DocsFileReader();
+       // docsFileReader = new DocsFileReader();
     }
-
-    @Test
-    public void ShouldScanDocs(){
-        Assert.assertEquals(2, docsFileReader.getDocs().size());
-    }
-
-    @Before
-    public void setUp02(){
-        docsFileReader = new
-    }
-    @Test
-
 
     @Test
     public void ShouldReturnDocs(){
@@ -32,8 +21,11 @@ public class DocsFileReaderTest {
                 put("58043", ">This wouldn't happen to be the same thing as chiggers, would it>A truly awful parasitic affliction, as I understand it.  Tiny bug>dig deeply into the skin, burying themselves.  Yuck!  They have thes>things in OklahomaClose. My mother comes from Gainesville Tex, right across the borderThey claim to be the chigger capitol of the world, and I believe themWhen I grew up in Fort Worth it was bad enough, but in Gainesvillin the summer an attack was guaranteedDoug McDonal".toLowerCase());
             }
         };
-        Assert.assertEquals(result, docsFileReader.getDocs());
+        //Assert.assertEquals(result, docsFileReader.scanDocs(Objects.requireNonNull(new File("Temple").listFiles())));
     }
-*/
 
+    @Test
+    public void shouldReturnObject() {
+       // Assert.assertNotNull(DocsFileReader.getInstance());
+    }
 }

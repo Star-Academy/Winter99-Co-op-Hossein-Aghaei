@@ -3,20 +3,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HashInvertedIndex implements InvertedIndex {
-    private static HashInvertedIndex instance;
+    private final DocsFileReader docsFileReader;
     private final HashMap<String, ArrayList<String>> words = new HashMap<>();
     private final PorterStemmer porterStemmer = new PorterStemmer();
-    private final InputDocs inputDocs = InputDocs.getInstance();
     private final Object organizeLock = new Object();
+
+    public HashInvertedIndex(DocsFileReader docsFileReader) {
+        this.docsFileReader = docsFileReader;
+    }
 
     public void organizeDocsAndWords() {
         if (words.isEmpty()) {
             synchronized (organizeLock) {
                 if (words.isEmpty()) {
-                    HashMap<String, String> docs = inputDocs.getAllDocs(inputDocs.getDocsDirectoryFile().listFiles());
-                    for (final String doc : docs.keySet()) {
+                    HashMap<String, String> docs = docsFileReader.scanDocs();
+                    for (final String doc : docs.keySet())
                         queryOnDocsAndWords(doc, docs.get(doc));
-                    }
                 }
             }
         }
@@ -42,13 +44,7 @@ public class HashInvertedIndex implements InvertedIndex {
         return words.containsKey(word);
     }
 
-    public ArrayList<String> getDocsContain(final String word){
+    public ArrayList<String> getDocsContain(final String word) {
         return words.get(word);
-    }
-
-    public static HashInvertedIndex getInstance() {
-        if(instance == null)
-            instance = new HashInvertedIndex();
-        return instance;
     }
 }
