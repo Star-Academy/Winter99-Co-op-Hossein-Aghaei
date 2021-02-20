@@ -1,0 +1,5 @@
+phase04_test.ControllerTest.ShouldReturnNamesAndAverages
+phase04_test.FileReaderTest.ShouldReadStudentsJson
+phase04_test.FileReaderTest.ShouldRedGradesJson
+phase04_test.ObjectCreatorTest.ShouldReturnStudens
+phase04_test.ObjectCreatorTest.ShouldReturnGrades

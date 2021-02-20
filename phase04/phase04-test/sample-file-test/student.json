@@ -1,0 +1,16 @@
+[{
+        "StudentNumber": 1,
+        "FirstName": "Mahdi",
+        "LastName": "Malverdi"
+    },
+    {
+        "StudentNumber": 2,
+        "FirstName": "Mohammad",
+        "LastName": "Haghighat"
+    },
+    {
+        "StudentNumber": 3,
+        "FirstName": "Mohammad Hossein",
+        "LastName": "Mostmand"
+    }
+]

@@ -1,0 +1,43 @@
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.exe
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.deps.json
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.runtimeconfig.json
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.runtimeconfig.dev.json
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.dll
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\ref\main.dll
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\main.pdb
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.csprojAssemblyReference.cache
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.AssemblyInfoInputs.cache
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.AssemblyInfo.cs
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.csproj.CoreCompileInputs.cache
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.dll
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\ref\main.dll
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.pdb
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.genruntimeconfig.cache
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\phase04-Average.dll
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\phase04-Average.pdb
+C:\Users\hos3in\phase04\main\obj\Debug\net5.0\main.csproj.CopyComplete
+C:\Users\hos3in\phase04\main\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.exe
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.deps.json
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.runtimeconfig.json
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.runtimeconfig.dev.json
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\ref\main.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\main.pdb
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\phase04-Average.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\phase04-Average.pdb
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.csprojAssemblyReference.cache
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.AssemblyInfoInputs.cache
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.AssemblyInfo.cs
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.csproj.CoreCompileInputs.cache
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.csproj.CopyComplete
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\ref\main.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.pdb
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\obj\Debug\net5.0\main.genruntimeconfig.cache
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\files\student.json
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\main\bin\Debug\net5.0\Moq.dll
