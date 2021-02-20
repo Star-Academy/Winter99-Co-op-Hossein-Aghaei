@@ -1,82 +1,41 @@
 import java.util.ArrayList;
 
 public class Processor {
-    private static Processor instance;
-    private final FileReader fileReader;
-    private final InvertedIndex invertedIndex;
-    private final View view;
-    private ArrayList<String> withoutSignDocs;
-    private ArrayList<String> plusDocs;
-    private ArrayList<String> minusDocs;
+    private final ResultDocs resultDocs;
 
-    public Processor() {
-        fileReader = FileReader.getInstance();
-        invertedIndex = InvertedIndex.getInstance();
-        view = View.getInstance();
-        withoutSignDocs = new ArrayList<>();
-        plusDocs = new ArrayList<>();
-        minusDocs = new ArrayList<>();
+    public Processor(ResultDocs resultDocs) {
+        this.resultDocs = resultDocs;
     }
 
-    private ArrayList<String> getWithoutSignDocs() {
-        ArrayList<String> docs = new ArrayList<>();
-        if (!view.getWithoutSignWords().isEmpty())
-            if (invertedIndex.allWordsContain(view.getWithoutSignWords().get(0)))
-                docs.addAll(invertedIndex.getDocsContain(view.getWithoutSignWords().get(0)));
-            else
-                return docs;
-        for (int i = 1; i < view.getWithoutSignWords().size(); i++)
-            if (invertedIndex.allWordsContain(view.getWithoutSignWords().get(i))) {
-                ArrayList<String> docsOfWord = new ArrayList<>(invertedIndex.getDocsContain(view.getWithoutSignWords().get(i)));
-                docs.removeIf(doc -> !docsOfWord.contains(doc));
-            } else {
-                docs.clear();
-                return docs;
-            }
-        return docs;
-    }
-
-    private ArrayList<String> getMinusDocs() {
-        ArrayList<String> docs = new ArrayList<>(fileReader.getDocs().keySet());
-        for (final String word : view.getMinusWords())
-            if (invertedIndex.allWordsContain(word))
-                docs.removeAll(invertedIndex.getDocsContain(word));
-        return docs;
-    }
-
-    private ArrayList<String> getPlusDocs() {
-        ArrayList<String> docs = new ArrayList<>();
-        for (final String word : view.getPlusWords())
-            if (invertedIndex.allWordsContain(word))
-                docs.addAll(invertedIndex.getDocsContain(word));
-        return docs;
-    }
-
-    public ArrayList<String> getFinalSet() {
-        ArrayList<String> finalSet = new ArrayList<>(getInitialFinalSet());
-        finalSet.removeIf(doc -> !minusDocs.contains(doc));
-        finalSet.removeIf(doc -> !plusDocs.contains(doc) && !plusDocs.isEmpty());
+    private ArrayList<String> getFinalSet(ArrayList<String> noSignWords, ArrayList<String> plusWords) {
+        ArrayList<String> finalSet = getInitialFinalSet(noSignWords, plusWords);
+        finalSet.removeIf(doc -> !resultDocs.getMinusDocs().contains(doc));
+        finalSet.removeIf(doc -> !resultDocs.getPlusDocs().contains(doc) && !resultDocs.getPlusDocs().isEmpty());
         return finalSet;
     }
 
-    private ArrayList<String> getInitialFinalSet() {
-        withoutSignDocs = getWithoutSignDocs();
-        plusDocs = getPlusDocs();
-        minusDocs = getMinusDocs();
+    private ArrayList<String> getInitialFinalSet(ArrayList<String> noSignWords, ArrayList<String> plusWords) {
         ArrayList<String> initialFinalSet = new ArrayList<>();
-        if (view.getWithoutSignWords().isEmpty())
-            if (view.getPlusWords().isEmpty())
-                initialFinalSet.addAll(minusDocs);
-            else
-                initialFinalSet.addAll(plusDocs);
-        else
-            initialFinalSet.addAll(withoutSignDocs);
+        if (!noSignWords.isEmpty()) {
+            initialFinalSet.addAll(resultDocs.getNoSignDocs());
+            return initialFinalSet;
+        }
+        if (!plusWords.isEmpty()) {
+            initialFinalSet.addAll(resultDocs.getPlusDocs());
+            return initialFinalSet;
+        }
+        initialFinalSet.addAll(resultDocs.getMinusDocs());
         return initialFinalSet;
     }
 
-    public static Processor getInstance() {
-        if (instance == null)
-            instance = new Processor();
-        return instance;
+    public ArrayList<String> search(ArrayList<ArrayList<String>> allWordsDocsToSearch) {
+        setDocs(allWordsDocsToSearch);
+        return getFinalSet(allWordsDocsToSearch.get(0), allWordsDocsToSearch.get(1));
+    }
+
+    private void setDocs(ArrayList<ArrayList<String>> allWordsDocsToSearch) {
+        resultDocs.setNoSignDocs(allWordsDocsToSearch.get(0));
+        resultDocs.setPlusDocs(allWordsDocsToSearch.get(1));
+        resultDocs.setMinusDocs(allWordsDocsToSearch.get(2));
     }
 }
