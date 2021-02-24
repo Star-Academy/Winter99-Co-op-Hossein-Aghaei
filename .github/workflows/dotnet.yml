@@ -1,0 +1,28 @@
+name: .NET
+
+on:
+  push:
+    branches: [ phase05-TDD ]
+  pull_request:
+    branches: [ phase05-TDD ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: <phase05>
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: <phase05>
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: <phase05>
