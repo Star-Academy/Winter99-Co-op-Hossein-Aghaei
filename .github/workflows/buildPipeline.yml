@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -23,7 +21,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: phase05
-    - name: Restore dependencies
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
       working-directory: phase05
