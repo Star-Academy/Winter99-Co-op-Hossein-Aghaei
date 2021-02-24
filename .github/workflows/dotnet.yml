@@ -1,15 +1,15 @@
-name: .NET
+name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ phase05 ]
   pull_request:
     branches: [ master ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -19,10 +19,11 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: <phase05>
+      working-directory: phase05
     - name: Build
       run: dotnet build --no-restore
-      working-directory: <phase05>
+      working-directory: phase05
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: <phase05>
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+      working-directory: phase05
+
