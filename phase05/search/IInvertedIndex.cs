@@ -4,6 +4,6 @@ namespace search
 {
     public interface IInvertedIndex
     {
-        bool TryGetDocsContain(string word, out HashSet<string> result);
+        HashSet<string> GetDocsContain(string word);
     }
 }

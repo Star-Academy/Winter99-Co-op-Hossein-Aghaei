@@ -11,10 +11,10 @@ namespace search
         {
             _words = words;
         }
-
-        public bool TryGetDocsContain(string word , out HashSet<string> result)
+        
+        public HashSet<string> GetDocsContain(string word)
         {
-            return _words.TryGetValue(word, out result);
+            return !_words.ContainsKey(word) ? new HashSet<string>() : _words[word];
         }
     }
 }

@@ -15,15 +15,15 @@ namespace search
 
         public Dictionary<string, HashSet<string>> OrganizeDocsAndWords()
         {
-            var allData = _docFileReader.ScanData();
-            var result = allData.SelectMany(x =>
+            var allDocsNameKeyWithTheirContentValue = _docFileReader.ScanData();
+            var allWordsKeyWithTheirDocNameValue = allDocsNameKeyWithTheirContentValue.SelectMany(x =>
                 QueryOnWordsOfSpecificDoc(x.Key, x.Value));
-            var group = result.GroupBy(x => x.Key);
+            var allWordsKeyWithAllTheirDocsContainerValue = allWordsKeyWithTheirDocNameValue.GroupBy(x => x.Key);
 
-            return group.ToDictionary(x => x.Key, x =>
+            return allWordsKeyWithAllTheirDocsContainerValue.ToDictionary(x => x.Key, x =>
                 new HashSet<string>(x.Select(y => y.Value)));
         }
-
+        
         private static Dictionary<string, string> QueryOnWordsOfSpecificDoc(string docName, string docContent)
         {
             var wordsOfSpecificDoc = Regex.Split(docContent, "\\W+").Where(x => x.Length != 0)

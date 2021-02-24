@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace search
 {
@@ -17,7 +19,13 @@ namespace search
         {
             var input = _consoleView.GetUserInput();
             var splitWords = SplitInputIntoSeparateDocs(input);
-            
+            if (!IsInputValid(splitWords))
+                throw new ArgumentException("Sentence must have No Sign Word");
+            _consoleView.ShowSearchResult(_processor.Search(splitWords));
+        }
+        private static bool IsInputValid(DocContainer splitWords)
+        {
+            return splitWords.NoSignWords.Any();
         }
 
         public DocContainer SplitInputIntoSeparateDocs(string inputSentence)
@@ -30,9 +38,9 @@ namespace search
                 if (!word.StartsWith("+") && !word.StartsWith("-"))
                     noSignWords.Add(word);
                 if (word.StartsWith("+"))
-                    plusSignWords.Add(word);
-                else
-                    minusSignWords.Add(word);
+                    plusSignWords.Add(word.Substring(1));
+                if (word.StartsWith("-"))
+                    minusSignWords.Add(word.Substring(1));
             }
 
             var docContainer = new DocContainer

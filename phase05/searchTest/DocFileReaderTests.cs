@@ -16,7 +16,7 @@ namespace searchTest
         {
             //Arrange
             _sut = new DocFileReader(Path.GetFullPath(correctPath));
-            Dictionary<string, string> expected = new Dictionary<string, string>()
+            var expected = new Dictionary<string, string>()
             {
                 {
                     "57110",

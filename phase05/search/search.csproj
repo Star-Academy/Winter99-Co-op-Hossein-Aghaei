@@ -18,4 +18,10 @@
       <None Remove="obj\**" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="EnglishData\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>

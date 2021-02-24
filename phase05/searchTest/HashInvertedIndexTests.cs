@@ -1,34 +1,32 @@
 ﻿using System.Collections.Generic;
 using search;
 using Xunit;
-using FluentAssertions;
 
 namespace searchTest
 {
     public class HashInvertedIndexTests
     {
         private HashInvertedIndex _sut;
-
         
         [Fact]
-        public void TryGetDocsContainWord_ShouldSetCorrectDocs_WhenInputExists()
+        public void GetDocsContainWord_ShouldSetCorrectDocs_WhenInputExists()
         {
             //Arrange
-            var docs = new HashSet<string>()
+            var expected = new HashSet<string>()
             {
                 "57110"
             };
             var words = new Dictionary<string, HashSet<string>>()
             {
-                {"found", docs}
+                {"found", expected}
             };
             _sut = new HashInvertedIndex(words);
 
             //Act
-            var result = _sut.TryGetDocsContain("found",  result: out var expected);
+            var result = _sut.GetDocsContain("found");
             
             //Assert
-            Assert.Equal(expected, docs);
+            Assert.Equal(expected, result);
         }
 
         [Fact]
@@ -46,10 +44,10 @@ namespace searchTest
             _sut = new HashInvertedIndex(words);
             
             //Act
-            var result = _sut.TryGetDocsContain("go", out var expected);
+            var result = _sut.GetDocsContain("go");
             
             //Assert
-            result.Should().BeFalse();
+            Assert.Equal(new HashSet<string>(), result);
         }
     }
 }
