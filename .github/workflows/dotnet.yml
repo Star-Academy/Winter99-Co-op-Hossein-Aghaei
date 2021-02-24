@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ phase05-TDD ]
+    branches: [ master ]
   pull_request:
-    branches: [ phase05-TDD ]
+    branches: [ master ]
 
 jobs:
   build:
