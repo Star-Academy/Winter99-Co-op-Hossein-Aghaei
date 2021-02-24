@@ -2,9 +2,9 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ phase05-TDD ]
   pull_request:
-    branches: [ master ]
+    branches: [ phase05-TDD ]
 
 jobs:
   build:
