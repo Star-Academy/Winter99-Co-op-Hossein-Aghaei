@@ -16,6 +16,7 @@ namespace main
             foreach (var student in _controller.GetNamesAndAverages())
             {
                 Console.WriteLine(student.NameAndLAstName + " : " + student.Average);
+                
             }
         }
     }
