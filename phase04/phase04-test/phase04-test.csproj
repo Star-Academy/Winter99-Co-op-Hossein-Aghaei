@@ -25,4 +25,10 @@
     <ProjectReference Include="..\phase04-Average\phase04-Average.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="sample-file-test\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

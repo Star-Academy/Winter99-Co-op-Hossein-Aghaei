@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj": {}
+    "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj": {
+    "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
+        "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
         "projectName": "phase04-Average",
-        "projectPath": "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
+        "projectPath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
         "packagesPath": "C:\\Users\\hos3in\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\obj\\",
+        "outputPath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hos3in\\AppData\\Roaming\\NuGet\\NuGet.Config"

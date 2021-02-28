@@ -4,13 +4,13 @@ namespace phase04_Average
 {
     public class FileReader : IFileReader
     {
-        private string _gradesPath;
-        private string _studentsPath;
+        private readonly string _gradesPath;
+        private readonly string _studentsPath;
 
         public FileReader(string gradePath, string studentsPath)
         {
-            this._gradesPath = gradePath;
-            this._studentsPath = studentsPath;
+            _gradesPath = gradePath;
+            _studentsPath = studentsPath;
         }
 
         public string ReadGradesJson()

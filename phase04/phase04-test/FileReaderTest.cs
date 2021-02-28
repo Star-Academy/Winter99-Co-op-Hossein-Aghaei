@@ -8,7 +8,7 @@ namespace phase04_test
     {
         [Fact]
         public void ShouldReadStudentsJson(){
-             string studentsJsonPath = @"C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\phase04-test\sample-file-test\student.json";
+             string studentsJsonPath = @"sample-file-test\student.json";
              var fileReader = new FileReader("", studentsJsonPath);
              string expected = @"[{
         ""StudentNumber"": 1,
@@ -31,7 +31,7 @@ namespace phase04_test
 
         [Fact]
         public void ShouldRedGradesJson() {
-            string gradesJsonPath = @"C:\Users\hos3in\Desktop\New folder (2)\Winter99-Co-op-Hossein-Aghaei\phase04\phase04-test\sample-file-test\grade.json";
+            string gradesJsonPath = @"sample-file-test\grade.json";
             var fileReader = new FileReader(gradesJsonPath, "");
             string expected = @"[{
     ""StudentNumber"": 1,

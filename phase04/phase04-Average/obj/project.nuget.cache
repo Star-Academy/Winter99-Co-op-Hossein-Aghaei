@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+v045aUvFUAvdyS13xaUCKxCqY/lA+M64rJtue0wxue2sbthn5dZ60f4UQO7VBuh5GEKxj/cokGTc2/ohOpO2w==",
+  "dgSpecHash": "TmBwyG7RH9RyxNTtTc24bA9gr5n5AfnvS/i2zeksgXCs0q1hHJRnPkDKX9kOEQqtyBN0jx/ZgRE80z2gzZ506A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
+  "projectFilePath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-Average\\phase04-Average.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hos3in\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],

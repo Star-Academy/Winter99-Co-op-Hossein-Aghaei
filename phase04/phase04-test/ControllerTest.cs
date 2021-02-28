@@ -16,9 +16,9 @@ namespace phase04_test
             objectCreator.Setup(x => x.GetAllGrades(It.IsAny<string>())).Returns(GetSomeGGrades());
             objectCreator.Setup(x => x.GetAllStudents(It.IsAny<string>())).Returns(GetSomeStudents());
             var controller = new Controller(objectCreator.Object, fileReader.Object);
-            var student1 = new StudentInfo() { NameAndLAstName = "Mahdi Malverdi", Average = 18.5 };
-            var student2 = new StudentInfo() { NameAndLAstName = "Mohammad Haghighat", Average = 19.5 };
-            var student3 = new StudentInfo() { NameAndLAstName = "Hossein Aghaei", Average = 17 };
+            var student1 = new StudentInfo() { FullName = "Mahdi Malverdi", Average = 18.5 };
+            var student2 = new StudentInfo() { FullName = "Mohammad Haghighat", Average = 19.5 };
+            var student3 = new StudentInfo() { FullName = "Hossein Aghaei", Average = 17 };
             IEnumerable<StudentInfo> result = new List<StudentInfo>(){ student1, student2, student3 };
             Assert.Equal(result, controller.GetNamesAndAverages());
         }

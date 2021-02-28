@@ -3,19 +3,18 @@ using phase04_Average;
 
 namespace main
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args) {
+        private static void Main(string[] args) {
 
-            var _fileReader = new FileReader("C:/Users/hos3in/Desktop/New folder (2)/Winter99-Co-op-Hossein-Aghaei/phase04/grades.json",
-            "files/student.json");
-            var _objectCreator = new ObjectCreator();
+            var fileReader = new FileReader(@"files\grades.json", @"files\student.json");
+            var objectCreator = new ObjectCreator();
 
-            var _controller = new Controller(_objectCreator, _fileReader);
+            var controller = new Controller(objectCreator, fileReader);
 
-            foreach (var student in _controller.GetNamesAndAverages())
+            foreach (var student in controller.GetNamesAndAverages())
             {
-                Console.WriteLine(student.NameAndLAstName + " : " + student.Average);
+                Console.WriteLine(student.FullName + " : " + student.Average);
                 
             }
         }

@@ -23,10 +23,5 @@ namespace phase04_Average
                    FirstName == student.FirstName &&
                    LastName == student.LastName;
         }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(StudentNumber, FirstName, LastName);
-        }
     }
 }

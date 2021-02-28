@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QX93ylvRi5CflrZZvt9zoiO9wV+8S58U09fzHHX2Q6wLir/bcMIy/MhNSZrc1dBkZlhLaXCcg36LEGSIBam3zw==",
+  "dgSpecHash": "KfB9p281y+JQbVxI7Sxbam9ZMvxehaw74E4B3MR8OC4scpdMMLP28ksPXfHOVp4a7uXtFeOjilCUjihQYUDhlA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hos3in\\Desktop\\New folder (2)\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-test\\phase04-test.csproj",
+  "projectFilePath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase04\\phase04-test\\phase04-test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hos3in\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\hos3in\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
