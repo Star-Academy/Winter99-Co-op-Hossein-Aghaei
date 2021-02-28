@@ -20,6 +20,7 @@ public final class FileReader {
             if (fileReader.hasNext())
                 docs.put(doc.getName(), fileReader.nextLine().toLowerCase());
         }
+        
     }
 
     public HashMap<String, String> getDocs() {
