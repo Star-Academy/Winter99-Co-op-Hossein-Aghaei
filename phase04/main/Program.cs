@@ -9,7 +9,6 @@ namespace main
 
             var fileReader = new FileReader(@"files\grades.json", @"files\student.json");
             var objectCreator = new ObjectCreator();
-
             var controller = new Controller(objectCreator, fileReader);
 
             foreach (var student in controller.GetNamesAndAverages())
