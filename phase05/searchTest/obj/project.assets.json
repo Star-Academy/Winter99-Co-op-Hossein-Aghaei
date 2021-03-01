@@ -1856,14 +1856,14 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "search/1.0.0": {
+      "StarAcademy.HosseinAghaei.InvertedIndexSearch/1.2.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/search.dll": {}
+          "bin/placeholder/StarAcademy.HosseinAghaei.InvertedIndexSearch.dll": {}
         },
         "runtime": {
-          "bin/placeholder/search.dll": {}
+          "bin/placeholder/StarAcademy.HosseinAghaei.InvertedIndexSearch.dll": {}
         }
       }
     }
@@ -6290,7 +6290,7 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "search/1.0.0": {
+    "StarAcademy.HosseinAghaei.InvertedIndexSearch/1.2.0": {
       "type": "project",
       "path": "../search/search.csproj",
       "msbuildProject": "../search/search.csproj"
@@ -6301,8 +6301,8 @@
       "FluentAssertions >= 6.0.0-alpha0002",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "NSubstitute >= 4.2.2",
+      "StarAcademy.HosseinAghaei.InvertedIndexSearch >= 1.2.0",
       "coverlet.collector >= 3.0.3",
-      "search >= 1.0.0",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
     ]
@@ -6311,7 +6311,7 @@
     "C:\\Users\\hos3in\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.2.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\searchTest\\searchTest.csproj",
       "projectName": "searchTest",

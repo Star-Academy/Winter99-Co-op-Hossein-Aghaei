@@ -2,20 +2,20 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "search/1.0.0": {
+      "StarAcademy.HosseinAghaei.InvertedIndexSearch/1.2.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/search.dll": {}
+          "bin/placeholder/StarAcademy.HosseinAghaei.InvertedIndexSearch.dll": {}
         },
         "runtime": {
-          "bin/placeholder/search.dll": {}
+          "bin/placeholder/StarAcademy.HosseinAghaei.InvertedIndexSearch.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "search/1.0.0": {
+    "StarAcademy.HosseinAghaei.InvertedIndexSearch/1.2.0": {
       "type": "project",
       "path": "../search/search.csproj",
       "msbuildProject": "../search/search.csproj"
@@ -23,14 +23,14 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "search >= 1.0.0"
+      "StarAcademy.HosseinAghaei.InvertedIndexSearch >= 1.2.0"
     ]
   },
   "packageFolders": {
     "C:\\Users\\hos3in\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.2.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\main\\main.csproj",
       "projectName": "main",

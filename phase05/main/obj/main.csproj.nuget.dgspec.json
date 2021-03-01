@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\main\\main.csproj": {
-      "version": "1.0.0",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\main\\main.csproj",
         "projectName": "main",
@@ -61,10 +61,10 @@
       }
     },
     "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\search.csproj": {
-      "version": "1.0.0",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\search.csproj",
-        "projectName": "search",
+        "projectName": "StarAcademy.HosseinAghaei.InvertedIndexSearch",
         "projectPath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\search.csproj",
         "packagesPath": "C:\\Users\\hos3in\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\obj\\",
@@ -73,14 +73,14 @@
           "C:\\Users\\hos3in\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "netstandard2.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -91,8 +91,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "imports": [
             "net461",
             "net462",
@@ -104,7 +104,7 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.NETCore.App": {
+            "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
