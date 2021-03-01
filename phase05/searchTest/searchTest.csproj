@@ -18,17 +18,16 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-    
 
     <ItemGroup>
         <ProjectReference Include="..\search\search.csproj" />
-    </ItemGroup>dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="sample_data\*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
-
-
+    
+    
 </Project>
