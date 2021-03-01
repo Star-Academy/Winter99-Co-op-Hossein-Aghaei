@@ -26,5 +26,5 @@ jobs:
       run: dotnet pack -c Release -o artifacts -p:PackageVersion=${{ steps.version.outputs.release }}
       working-directory: phase05/search
     - name: Publish NuGet Package
-      run: dotnet nuget push ./**/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./**/*.nupkg -k ${{ secrets.MY_NUGET_SECRET }} -s https://api.nuget.org/v3/index.json
     
