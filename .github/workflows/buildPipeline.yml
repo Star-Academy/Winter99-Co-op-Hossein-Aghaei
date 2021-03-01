@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ phase05 ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
