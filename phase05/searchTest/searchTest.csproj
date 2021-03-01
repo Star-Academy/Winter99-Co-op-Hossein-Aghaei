@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -22,7 +22,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\search\search.csproj" />
-    </ItemGroup>
+    </ItemGroup>dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
     <ItemGroup>
         <None Include="sample_data\*">
