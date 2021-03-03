@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\searchTest\\searchTest.csproj": {
-      "version": "1.2.0",
+      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\searchTest\\searchTest.csproj",
         "projectName": "searchTest",
@@ -91,7 +91,7 @@
       }
     },
     "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\search.csproj": {
-      "version": "1.2.0",
+      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\hos3in\\RiderProjects\\Winter99-Co-op-Hossein-Aghaei\\phase05\\search\\search.csproj",
         "projectName": "StarAcademy.HosseinAghaei.InvertedIndexSearch",
