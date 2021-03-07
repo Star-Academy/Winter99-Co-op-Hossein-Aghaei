@@ -10,7 +10,7 @@ namespace Model
         
         [Required]
         public string Term { get; set;}
-        
-        public ICollection<Doc> DocsContainer { get; set; }
+
+        public List<Doc> DocsContainer { get; set; } = new List<Doc>();
     }
 }

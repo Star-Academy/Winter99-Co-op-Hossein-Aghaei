@@ -9,4 +9,12 @@
       <ProjectReference Include="..\search\search.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="EnglishData\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    
+    
+
 </Project>

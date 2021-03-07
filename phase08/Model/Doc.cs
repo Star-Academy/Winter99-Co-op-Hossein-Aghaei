@@ -14,6 +14,6 @@ namespace Model
         [Required]
         public string Content { get; set; }
         
-        public ICollection<Word> WordsOfDoc { get; set; }
+        public List<Word> WordsOfDoc { get; set; } = new();
     }
 }
