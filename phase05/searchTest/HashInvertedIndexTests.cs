@@ -30,7 +30,7 @@ namespace searchTest
         }
 
         [Fact]
-        public void GetDocsContain_ShouldReturnFalse_WhenInputDoesNotExists()
+        public void GetDocsContain_ShouldReturnEmptyList_WhenInputDoesNotExists()
         {
             //Arrange
             var docs = new HashSet<string>()
