@@ -33,7 +33,6 @@ namespace searchTest
             context.Docs.AddRange(doc1, doc2);
             context.Words.AddRange(word1, word2);
             context.SaveChanges();
-            context.SaveChanges();
             
             return context;
         }
