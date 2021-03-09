@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NSubstitute;
 using search;
 using Xunit;
@@ -26,15 +25,13 @@ namespace searchTest
             {
                 {"57110", "found. hello"}, {"58043", "found+"}, {"58046", "find ++==dad soon!"}
             };
-            _docFileReader.ScanData().Returns(returnedScanData);
+            _docFileReader.ScanData("EnglishData").Returns(returnedScanData);
             
-            _sut.OrganizeDocsAndWords();
+            _sut.OrganizeDocsAndWords("EnglishData");
             var result = _documentRepository.GetDocsContain("found");
             var expected = new HashSet<string>() {"57110", "58043"};
 
             Assert.Equal(expected, result);
-
         }
-        
     }
 }

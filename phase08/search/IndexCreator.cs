@@ -16,15 +16,18 @@ namespace search
             _documentRepository = documentRepository;
         }
         
-        public void OrganizeDocsAndWords()
+        public void OrganizeDocsAndWords(string directoryPath)
         { 
-            var allDocsNameKeyWithTheirContentValue = _docFileReader.ScanData();
+            var allDocsNameKeyWithTheirContentValue = _docFileReader.ScanData(directoryPath);
             SaveAllData(allDocsNameKeyWithTheirContentValue);
         }
 
         private void SaveAllData(Dictionary<string, string> allDocuments)
         {
-            foreach (var doc in allDocuments.Keys.Except(_documentRepository.GetExistedDocs(allDocuments.Keys.ToList())))
+            var allDocs = allDocuments.Keys.ToList();
+            var existingDocuments = _documentRepository.GetExistingDocs(allDocs);
+            var newDocuments = allDocuments.Keys.Except(existingDocuments);
+            foreach (var doc in newDocuments)
             {
                 SaveOneDocument(doc, allDocuments[doc]);
             }
@@ -43,7 +46,8 @@ namespace search
         
         private static HashSet<string> SplitWordsOfDoc(string docContent)
         {
-            var wordsOfSpecificDoc = Regex.Split(docContent, "\\W+").Where(x => x.Length != 0).ToHashSet();
+            var wordsOfSpecificDoc = Regex.Split(docContent, "\\W+").
+                Where(x => x.Length != 0).ToHashSet();
             return wordsOfSpecificDoc;
         }
     }

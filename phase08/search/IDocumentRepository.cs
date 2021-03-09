@@ -7,7 +7,7 @@ namespace search
     {
         bool ContainsWord(string word);
 
-        IEnumerable<string> GetExistedDocs(List<string> docs);
+        IEnumerable<string> GetExistingDocs(List<string> docs);
 
         void AddNewDoc(Doc doc);
 

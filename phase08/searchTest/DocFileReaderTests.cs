@@ -8,14 +8,12 @@ namespace searchTest
 {
     public class DocFileReaderTests
     {
-        private DocFileReader _sut;
+        private readonly IFileReader _sut = new DocFileReader();
 
         [Theory]
         [InlineData("sample_data")]
         public void ScanData_ShouldScanDocsAndWords_WhenAddressIsCorrect(string correctPath)
         {
-            //Arrange
-            _sut = new DocFileReader(Path.GetFullPath(correctPath));
             var expected = new Dictionary<string, string>()
             {
                 {
@@ -28,10 +26,8 @@ namespace searchTest
                 }
             };
             
-            //Act
-            var result = _sut.ScanData();
+            var result = _sut.ScanData(Path.GetFullPath(correctPath));
             
-            //Assert
             Assert.Equal(expected, result);
         }
         
@@ -39,14 +35,9 @@ namespace searchTest
         [InlineData("sample_files")]
         public void scanData_ShouldThrowIOException_WhenAddressIsNotCorrect(string wrongPath)
         {
-            //Arrange
-            _sut = new DocFileReader(Path.GetFullPath(wrongPath));
-            
-            //Act
-            void Action() => _sut.ScanData();
+            void Action() => _sut.ScanData(Path.GetFullPath(wrongPath));
 
-            //Assert
-            Assert.Throws<IOException>( Action);
+            Assert.Throws<IOException>(Action);
         }
        
     }

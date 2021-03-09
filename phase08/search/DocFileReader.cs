@@ -6,27 +6,30 @@ namespace search
 {
     public class DocFileReader : IFileReader
     {
-        private readonly string _path;
-
-        public DocFileReader(string path)
+        public Dictionary<string, string> ScanData(string directoryPath)
         {
-            _path = path;
-        }
-
-        public Dictionary<string, string> ScanData()
-        {
-            var docsWithWords = GetAllFilesOfDirectory().Select(x => new
+            var docsWithWords = GetAllFilesOfDirectory(directoryPath).Select(x => new
             {
-                FileName = Path.GetFileNameWithoutExtension(x),
-                FileContent = File.ReadAllText(x).ToLower()
+                FileName = GetFileName(x),
+                FileContent = ReadDocContent(x)
             });
             return docsWithWords.ToDictionary(x => x.FileName, x => x.FileContent);
         }
 
-        private IEnumerable<string> GetAllFilesOfDirectory()
+        private static string GetFileName(string filePath)
         {
-            if (!Directory.Exists(_path)) throw new IOException("Directory doesn't exists!");
-            var allFiles = Directory.GetFiles(_path);
+            return Path.GetFileNameWithoutExtension(filePath);
+        }
+
+        private static string ReadDocContent(string filePath)
+        {
+            return File.ReadAllText(filePath).ToLower();
+        }
+
+        private static IEnumerable<string> GetAllFilesOfDirectory(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath)) throw new IOException("Directory doesn't exists!");
+            var allFiles = Directory.GetFiles(directoryPath);
             return allFiles;
         }
     }

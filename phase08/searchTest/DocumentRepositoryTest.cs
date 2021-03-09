@@ -18,20 +18,20 @@ namespace searchTest
         }
 
         [Fact]
-        public void GetExistedDocs_ShouldReturnEmptyList_WhenNoInputExists()
+        public void GetExistingDocs_ShouldReturnEmptyList_WhenNoInputExists()
         {
             var documentRepository = new DocumentRepository(_searchContext);
-            var result = documentRepository.GetExistedDocs(new List<string>() {"356", "782"}).ToList();
+            var result = documentRepository.GetExistingDocs(new List<string>() {"356", "782"}).ToList();
             Assert.Empty(result);
         }
-
+        
         [Fact]
-        public void GetExistedDocs_ShouldReturnCorrectList_WhenInputExists()
+        public void GetExistingDocs_ShouldReturnCorrectList_WhenInputExists()
         {
             var expected = new List<string>() {"123"};
 
             var documentRepository = new DocumentRepository(_searchContext);
-            var result = documentRepository.GetExistedDocs(new List<string>() {"123", "782"}).ToList();
+            var result = documentRepository.GetExistingDocs(new List<string>() {"123", "782"}).ToList();
 
             Assert.Equal(expected, result);
         }
@@ -68,7 +68,8 @@ namespace searchTest
             var documentRepository = new DocumentRepository(_searchContext);
             documentRepository.AddDuplicateWords(words, doc);
             var expected = _searchContext.Words.Where(x => x.Term == "hello")
-                .Include(x => x.DocsContainer).First().DocsContainer;
+                .Include(x => x.DocsContainer)
+                .First().DocsContainer;
 
             Assert.Equal(3, expected.Count);
             Assert.Equal("789", expected[2].Name);

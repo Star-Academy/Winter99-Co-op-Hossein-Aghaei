@@ -14,7 +14,7 @@ namespace searchTest
             return _allData.ContainsKey(word);
         }
 
-        public IEnumerable<string> GetExistedDocs(List<string> docs)
+        public IEnumerable<string> GetExistingDocs(List<string> docs)
         {
             return docs.Where(x => _allData.ContainsKey(x));
         }

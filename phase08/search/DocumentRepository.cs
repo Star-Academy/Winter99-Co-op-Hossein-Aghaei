@@ -19,9 +19,10 @@ namespace search
             return _searchContext.Words.Any(x => x.Term == word);
         }
 
-        public IEnumerable<string> GetExistedDocs(List<string> docs)
+        public IEnumerable<string> GetExistingDocs(List<string> docs)
         {
-            return _searchContext.Docs.Where(x => docs.Contains(x.Name)).Select(x => x.Name).ToList();
+            return _searchContext.Docs.Where(x => docs.Contains(x.Name))
+                .Select(x => x.Name).ToList();
         }
 
         public void AddNewDoc(Doc doc)
@@ -31,8 +32,8 @@ namespace search
         
         public void AddDuplicateWords(List<string> duplicateWords, Doc newDoc)
         {
-            var xWord = _searchContext.Words.Where(x => duplicateWords.Contains(x.Term));
-            foreach (var word in xWord)
+            var duplicateWordsInDb = _searchContext.Words.Where(x => duplicateWords.Contains(x.Term));
+            foreach (var word in duplicateWordsInDb)
             {
                 word.DocsContainer.Add(newDoc);
             }
@@ -41,9 +42,13 @@ namespace search
 
         public HashSet<string> GetDocsContain(string word)
         {
-            return _searchContext.Words.Any(x => x.Term == word)
-                ? _searchContext.Words.Include(x => x.DocsContainer).First(x => x.Term == word).DocsContainer.Select(x => x.Name).ToHashSet()
-                : new HashSet<string>();
+            var existingWord = _searchContext.Words.Include(x => x.DocsContainer)
+                .FirstOrDefault(x => x.Term == word);
+            if (existingWord == default)
+                return new HashSet<string>();
+
+            return existingWord.DocsContainer.Select(x => x.Name)
+                .ToHashSet();
         }
     }
 }

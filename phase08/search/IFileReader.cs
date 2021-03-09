@@ -4,6 +4,6 @@ namespace search
 {
     public interface IFileReader
     {
-        Dictionary<string, string> ScanData();
+        Dictionary<string, string> ScanData(string path);
     }
 }

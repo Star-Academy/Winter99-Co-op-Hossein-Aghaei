@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace search
 {
-    public class Controller : ISplitter
+    public class Controller
     {
         private readonly IView _consoleView;
         private readonly ISearch _processor;
@@ -28,7 +28,7 @@ namespace search
             return splitWords.NoSignWords.Any();
         }
 
-        public DocContainer SplitInputIntoSeparateDocs(string inputSentence)
+        private static DocContainer SplitInputIntoSeparateDocs(string inputSentence)
         {
             var noSignWords = new HashSet<string>();
             var plusSignWords = new HashSet<string>();
@@ -45,7 +45,9 @@ namespace search
 
             var docContainer = new DocContainer
             {
-                NoSignWords = noSignWords, PlusSignWords = plusSignWords, MinusSignWords = minusSignWords
+                NoSignWords = noSignWords,
+                PlusSignWords = plusSignWords,
+                MinusSignWords = minusSignWords
             };
             return docContainer;
         }
