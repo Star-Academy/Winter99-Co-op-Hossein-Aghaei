@@ -8,7 +8,7 @@ namespace main
         private static void Main(string[] args)
         {
             var context = new SearchContextFactory().CreateDbContext(args);
-            var docFileReader = new DocFileReader();
+            var docFileReader = new DocFileReader(); 
             var documentRepository = new DocumentRepository(context);
             var indexCreator = new IndexCreator(docFileReader, documentRepository);
             indexCreator.OrganizeDocsAndWords("EnglishData");
