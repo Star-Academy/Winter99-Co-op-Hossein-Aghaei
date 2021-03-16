@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main", "main\main.csproj", "{AACBDC8D-8229-42BC-B115-9760E22BB92B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elasticsearch", "elasticsearch\elasticsearch.csproj", "{16DA1ECB-27F8-45FC-91BC-4D409B516E42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16DA1ECB-27F8-45FC-91BC-4D409B516E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16DA1ECB-27F8-45FC-91BC-4D409B516E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AACBDC8D-8229-42BC-B115-9760E22BB92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AACBDC8D-8229-42BC-B115-9760E22BB92B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
