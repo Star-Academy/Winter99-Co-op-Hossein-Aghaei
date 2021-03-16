@@ -1,4 +1,5 @@
-﻿using elasticsearch.model;
+﻿using System;
+using elasticsearch.model;
 using Nest;
 
 namespace elasticsearch
@@ -14,11 +15,10 @@ namespace elasticsearch
 
         public void CreateIndex(string indexName)
         {
-            if (IsIndexExisting(indexName))
-                return;
-            _client.Indices.Create(indexName,
+            var response = _client.Indices.Create(indexName,
                 descriptor => descriptor.Settings(SetupSetting).
                     Map<Doc>(SetupMapping));
+            Console.WriteLine(response.ToString());
         }
 
         private static ITypeMapping SetupMapping(TypeMappingDescriptor<Doc> typeMapping)
@@ -55,7 +55,8 @@ namespace elasticsearch
                 s => s.Tokenizer(TokenFilter.Standard).
                     Filters(TokenFilter.LowerCase, 
                         TokenFilter.WordDelimiter, 
-                        TokenFilter.EnglishStopWords));
+                        TokenFilter.EnglishStopWords,
+                        TokenFilter.NGram));
         }
 
         private static IPromise<ITokenFilters> SetupTokenFilter(TokenFiltersDescriptor tokenFilters)
@@ -64,12 +65,6 @@ namespace elasticsearch
                 NGram(TokenFilter.NGram, s => s.
                     MinGram(3).
                     MaxGram(10));
-        }
-        
-        private bool IsIndexExisting(string indexName)
-        {
-            var response = _client.Indices.Exists(indexName);
-            return response.Exists;
         }
     }
 } 

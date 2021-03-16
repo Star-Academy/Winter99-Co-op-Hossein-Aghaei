@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace elasticsearch
 {
     public class Controller
     {
         private readonly IView _consoleView;
-        private readonly ISearch _processor;
+        private readonly ISearch _searcher;
 
-        public Controller(IView consoleView, ISearch processor)
+        public Controller(IView consoleView, ISearch searcher)
         {
             _consoleView = consoleView;
-            _processor = processor;
+            _searcher = searcher;
         }
 
         public void Run()
@@ -21,12 +19,12 @@ namespace elasticsearch
             var splitWords = SplitInputIntoSeparateDocs(input);
             if (!IsInputValid(splitWords))
                 throw new ArgumentException("Sentence must have No Sign Word");
-            _consoleView.ShowSearchResult(_processor.Search(splitWords));
+            _consoleView.ShowSearchResult(_searcher.Search(splitWords));
         }
 
         private static bool IsInputValid(DocContainer splitWords)
         {
-            return splitWords.NoSignWords.Any();
+            return !string.IsNullOrWhiteSpace(splitWords.NoSignWords);
         }
 
         private static DocContainer SplitInputIntoSeparateDocs(string inputSentence)

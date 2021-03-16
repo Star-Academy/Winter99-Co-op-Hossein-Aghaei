@@ -26,10 +26,11 @@ namespace elasticsearch
             {
                 new MatchQuery
                 {
-                    Field = "Content",
+                    Field = "content",
                     Query = plusSignWords.Length == 0 ? noSignWords : plusSignWords,
                     AutoGenerateSynonymsPhraseQuery = true,
-                    Operator = Operator.Or
+                    Operator = Operator.Or,
+                    Analyzer = Analyzer.CustomAnalyzer
                 }
             };
             return shouldQuery;
@@ -41,10 +42,11 @@ namespace elasticsearch
             {
                 new MatchQuery
                 {
-                    Field = "Content",
+                    Field = "content",
                     Query = minusSignWords,
                     AutoGenerateSynonymsPhraseQuery = true,
-                    Operator = Operator.Or
+                    Operator = Operator.Or,
+                    Analyzer = Analyzer.CustomAnalyzer
                 }
             };
             return mustNotQuery;
@@ -56,7 +58,7 @@ namespace elasticsearch
             {
                 new MatchQuery
                 {
-                    Field = "Content",
+                    Field = "content",
                     AutoGenerateSynonymsPhraseQuery = true,
                     Query = noSignWords,
                     Operator = Operator.And

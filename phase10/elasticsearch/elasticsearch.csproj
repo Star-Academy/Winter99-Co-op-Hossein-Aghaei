@@ -9,4 +9,10 @@
       <PackageReference Include="NEST" Version="7.11.1" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="EnglishData\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>
