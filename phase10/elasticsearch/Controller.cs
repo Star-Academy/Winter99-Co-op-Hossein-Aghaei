@@ -44,9 +44,9 @@ namespace elasticsearch
 
             var docContainer = new DocContainer
             {
-                NoSignWords = noSignWords,
-                PlusSignWords = plusSignWords,
-                MinusSignWords = minusSignWords
+                NoSignWords = noSignWords.Trim(),
+                PlusSignWords = plusSignWords.Trim(),
+                MinusSignWords = minusSignWords.Trim()
             };
             return docContainer;
         }
