@@ -5,6 +5,6 @@ namespace elasticsearch
 {
     public interface IDocFactory
     {
-        IEnumerable<Doc> GetAllDocuments(string directoryPath);
+        List<Doc> GetAllDocuments(string directoryPath);
     }
 }

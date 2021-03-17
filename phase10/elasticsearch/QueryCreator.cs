@@ -3,7 +3,7 @@ using Nest;
 
 namespace elasticsearch
 {
-    public class QueryCreator : IBoolQuery
+    public class QueryCreator : IBoolQueryCreator
     {
         public QueryContainer CreateBoolQuery(DocContainer input)
         {
@@ -14,23 +14,22 @@ namespace elasticsearch
             };
             if (string.IsNullOrWhiteSpace(input.PlusSignWords)) return boolQuery;
 
-            boolQuery.Should = SetupShouldQuery(input.PlusSignWords, input.NoSignWords);
+            boolQuery.Should = SetupShouldQuery(input.PlusSignWords);
             boolQuery.MinimumShouldMatch = 1;
 
             return boolQuery;
         }
 
-        private static IEnumerable<QueryContainer> SetupShouldQuery(string plusSignWords, string noSignWords)
+        private static IEnumerable<QueryContainer> SetupShouldQuery(string plusSignWords)
         {
             var shouldQuery = new List<QueryContainer>
             {
                 new MatchQuery
                 {
                     Field = "content",
-                    Query = plusSignWords.Length == 0 ? noSignWords : plusSignWords,
+                    Query = plusSignWords,
                     AutoGenerateSynonymsPhraseQuery = true,
                     Operator = Operator.Or,
-                    Analyzer = Analyzer.CustomAnalyzer
                 }
             };
             return shouldQuery;
@@ -46,7 +45,6 @@ namespace elasticsearch
                     Query = minusSignWords,
                     AutoGenerateSynonymsPhraseQuery = true,
                     Operator = Operator.Or,
-                    Analyzer = Analyzer.CustomAnalyzer
                 }
             };
             return mustNotQuery;

@@ -2,7 +2,7 @@
 
 namespace elasticsearch
 {
-    public interface IBoolQuery
+    public interface IBoolQueryCreator
     {
         QueryContainer CreateBoolQuery(DocContainer input);
     }

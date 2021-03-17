@@ -13,7 +13,7 @@ namespace elasticsearch
             _fileReader = fileReader;
         }
 
-        public IEnumerable<Doc> GetAllDocuments(string directoryPath)
+        public List<Doc> GetAllDocuments(string directoryPath)
         {
             var allDocuments = _fileReader.ScanData(directoryPath);
             return allDocuments.
@@ -22,7 +22,7 @@ namespace elasticsearch
                     {
                         Name = doc.Key,
                         Content = doc.Value
-                    });
+                    }).ToList();
         }
     }
 }
