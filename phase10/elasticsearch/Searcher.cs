@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using elasticsearch.model;
+using Elasticsearch.Net;
 using Nest;
 
 namespace elasticsearch
@@ -22,14 +23,11 @@ namespace elasticsearch
         public HashSet<string> Search(DocContainer input)
         {
             var query = _queryCreator.CreateBoolQuery(input);
-            Console.WriteLine(query.GetType());
-            Console.WriteLine(query.ToString());
-
             var response = _client.Search<Doc>(s => s.
                 Index(_index).
                 Query(q => query).
                 Size(1000));
-
+            response.Validate();
             return response.Documents.Select(doc => doc.Name).ToHashSet();
         }
 

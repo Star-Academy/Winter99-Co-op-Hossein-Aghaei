@@ -6,23 +6,23 @@ namespace main
 {
     internal static class Program
     {
+        private const string Index = "inverted_index";
+        private const string DocumentsPath = "EnglishData";
         private static void Main(string[] args)
         {
-            const string index = "inverted_index";
-            const string documentsPath = "EnglishData";
             var client = ElasticClientFactory.CreateElasticClient();
             var queryCreator = new QueryCreator();
-            var searcher = new Searcher(client, queryCreator, index);
+            var searcher = new Searcher(client, queryCreator, Index);
             var consoleView = new ConsoleView();
             var controller = new Controller(consoleView, searcher);
-            if (!IsIndexExisting(index, client))
+            if (!IsIndexExisting(Index, client))
             {
                 var indexCreator = new IndexCreator(client);
-                indexCreator.CreateIndex(index);
+                indexCreator.CreateIndex(Index);
                 var fileReader = new DocFileReader();
                 var docCreator = new DocFactory(fileReader);
                 var importer = new Importer<Doc>(client);
-                importer.Import(docCreator.GetAllDocuments(documentsPath), index);
+                importer.Import(docCreator.GetAllDocuments(DocumentsPath), Index);
             }
             controller.Run();
         }

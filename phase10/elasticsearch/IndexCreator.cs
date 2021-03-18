@@ -1,10 +1,9 @@
-﻿using System;
-using elasticsearch.model;
+﻿using elasticsearch.model;
 using Nest;
 
 namespace elasticsearch
 {
-    public class IndexCreator
+    public class IndexCreator 
     {
         private readonly IElasticClient _client;
       
@@ -18,7 +17,8 @@ namespace elasticsearch
             var response = _client.Indices.Create(indexName,
                 descriptor => descriptor.Settings(SetupSetting).
                     Map<Doc>(SetupMapping));
-            Console.WriteLine(response.ToString());
+            response.Validate();
+
         }
 
         private static ITypeMapping SetupMapping(TypeMappingDescriptor<Doc> typeMapping)

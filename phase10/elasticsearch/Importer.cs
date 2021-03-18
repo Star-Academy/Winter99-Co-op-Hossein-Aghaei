@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Elasticsearch.Net;
 using Nest;
 
 namespace elasticsearch
@@ -15,7 +16,8 @@ namespace elasticsearch
         public void Import(IEnumerable<T> documents, string indexName)
         {
             var bulk = SetupBulk(documents, indexName);
-            _client.Bulk(bulk);
+            var response = _client.Bulk(bulk);
+            response.Validate();
         }
 
         private static BulkDescriptor SetupBulk(IEnumerable<T> documents, string indexName)
