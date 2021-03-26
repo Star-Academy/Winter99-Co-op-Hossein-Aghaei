@@ -7,16 +7,8 @@ namespace elasticsearch
 {
     public static class ResponseValidator
     {
-        public static CreateIndexResponse Validate(this CreateIndexResponse response)
-        {
-            if (response.IsValid)
-                return response;
-            if (response.OriginalException is ElasticsearchClientException exception)
-                CheckOriginalException(exception);
-            return response;
-        }
 
-        public static BulkResponse Validate(this BulkResponse response)
+        public static T Validate<T>(this T response) where T : IResponse
         {
             if (response.IsValid)
                 return response;
@@ -41,11 +33,10 @@ namespace elasticsearch
                 PipelineFailure.MaxTimeoutReached => new ServerTimeOutException(),
                 PipelineFailure.BadAuthentication => new BadAuthenticationException(),
                 PipelineFailure.BadResponse => new BadResponseException(),
-                PipelineFailure.PingFailure => new WeakConnectionException(),
                 PipelineFailure.BadRequest => new BadRequestException(),
                 PipelineFailure.MaxRetriesReached => new MaxRetriesException(),
                 PipelineFailure.Unexpected => new UnexpectedException(),
-                _ => new Exception("BBin chikar kardi ke residi be difault bad 7 khan case!!")
+                _ => new Exception("BBin chikar kardi ke residi be difault baad 7 khan case!!")
             };
         }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using elasticsearch.model;
-using Elasticsearch.Net;
 using Nest;
 
 namespace elasticsearch
@@ -27,7 +26,8 @@ namespace elasticsearch
                 Index(_index).
                 Query(q => query).
                 Size(1000));
-            response.Validate();
+            //response.Validate();
+            Console.WriteLine();
             return response.Documents.Select(doc => doc.Name).ToHashSet();
         }
 
