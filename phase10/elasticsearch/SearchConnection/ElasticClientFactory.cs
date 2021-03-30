@@ -1,27 +1,32 @@
 ﻿using System;
+using Microsoft.Extensions.Configuration;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
-    public static class ElasticClientFactory
+    public class ElasticClientFactory
     {
-        private static readonly IElasticClient ElasticClient;
+        private readonly IElasticClient _elasticClient;
+        private readonly IConfiguration _configuration;
 
-        static ElasticClientFactory()
+        public ElasticClientFactory(IConfiguration configuration)
         {
-            ElasticClient = CreateClient();
+            _configuration = configuration;
+            _elasticClient = CreateClient();
         }
 
-        private static IElasticClient CreateClient()
+        private IElasticClient CreateClient()
         {
-            var uri = new Uri("http://localhost:9200");
+            var uriString = _configuration.GetValue<string>("Uri");
+            var uri = new Uri(uriString);
+            
             var connectionString = new ConnectionSettings(uri);
             return new ElasticClient(connectionString);
         }
 
-        public static IElasticClient CreateElasticClient()
+        public IElasticClient CreateElasticClient()
         {
-            return ElasticClient;
+            return _elasticClient;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace elasticsearch
+namespace elasticsearch.DocManager
 {
     public class DocContainer
     {

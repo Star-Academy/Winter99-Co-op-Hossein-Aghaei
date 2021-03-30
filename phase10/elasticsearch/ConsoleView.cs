@@ -8,8 +8,13 @@ namespace elasticsearch
     {
         public string GetUserInput()
         {
-            Console.WriteLine("Enter the sentence to Search!");
-            return Console.ReadLine();
+            string sentence = null;
+            while (sentence == null)
+            {
+                Console.WriteLine("Enter the sentence to Search!");
+                sentence = Console.ReadLine();
+            }
+            return sentence;
         }
 
         public void ShowSearchResult(HashSet<string> searchResult)

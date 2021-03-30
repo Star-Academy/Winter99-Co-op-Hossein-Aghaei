@@ -1,12 +1,16 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    public class BadResponseException : Exception
+    public abstract class BadResponseException : IPipeLineException
     {
-        public BadResponseException() : 
-            base("Response isn't you expected honey!")
+
+        public PipelineFailure Name { get; } = PipelineFailure.BadResponse;
+        public Exception ThrowException()
         {
+            var exception = new Exception("Response isn't you expected honey!");
+            return exception;
         }
     }
 }

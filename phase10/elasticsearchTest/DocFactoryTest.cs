@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using elasticsearch;
+using elasticsearch.DocManager;
 using elasticsearch.model;
 using Moq;
 using NSubstitute;

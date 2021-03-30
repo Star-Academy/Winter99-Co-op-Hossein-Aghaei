@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using elasticsearch;
+using elasticsearch.DocManager;
 using elasticsearch.model;
+using elasticsearch.SearchConnection;
 using Nest;
 using NSubstitute;
 using Xunit;

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using elasticsearch.DocManager;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public interface ISearch
     {

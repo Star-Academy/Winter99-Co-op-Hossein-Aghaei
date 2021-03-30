@@ -1,6 +1,7 @@
-﻿using Nest;
+﻿using elasticsearch.DocManager;
+using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public interface IBoolQueryCreator
     {

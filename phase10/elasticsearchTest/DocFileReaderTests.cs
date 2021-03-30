@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using elasticsearch;
+using elasticsearch.DocManager;
 using Xunit;
 
 namespace elasticsearchTest

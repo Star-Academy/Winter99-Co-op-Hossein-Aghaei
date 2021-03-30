@@ -1,7 +1,7 @@
 ﻿using System;
-using elasticsearch;
 using elasticsearch.model;
 using Elasticsearch.Net;
+using elasticsearch.Validation;
 using Nest;
 using NSubstitute;
 using Xunit;
@@ -18,8 +18,8 @@ namespace elasticsearchTest
             
             searchResponse.IsValid.Returns(false);
             searchResponse.OriginalException.Returns(elasticsearchClientException);
-
-            Assert.Throws<BadAuthenticationException>(searchResponse.Validate);
+            
+            Assert.Throws<Exception>(searchResponse.Validate);
         }
         
         [Fact]
@@ -31,7 +31,7 @@ namespace elasticsearchTest
             iSearchResponse.IsValid.Returns(false);
             iSearchResponse.OriginalException.Returns(elasticsearchClientException);
             
-            Assert.Throws<UnexpectedException>(iSearchResponse.Validate);
+            Assert.Throws<Exception>(iSearchResponse.Validate);
         }
     }
 }

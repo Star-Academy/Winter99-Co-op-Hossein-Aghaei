@@ -1,11 +1,15 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    public class BadAuthenticationException : Exception
+    public abstract class BadAuthenticationException : IPipeLineException
     {
-        public BadAuthenticationException() :
-            base("You mess in security things!")
-        {}
+        public PipelineFailure Name { get; } = PipelineFailure.BadAuthentication;
+        public Exception ThrowException()
+        {
+            var exception = new Exception("You mess in security things!");
+            return exception;
+        }
     }
 }

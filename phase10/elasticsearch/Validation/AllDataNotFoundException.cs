@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
     [Serializable]
     public class AllDataNotFoundException : Exception
@@ -9,6 +9,5 @@ namespace elasticsearch
             : base("Some data is missing on\nTry again in a few minutes for actual result")
         {
         }
-        
     }
 }

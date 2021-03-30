@@ -1,13 +1,15 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    [Serializable]
-    public class ServerTimeOutException : Exception
+    public abstract class ServerTimeOutException : IPipeLineException
     {
-        public ServerTimeOutException() :
-            base("Server is busy\nPlease Try again in a few Seconds")
+        public PipelineFailure Name { get; } = PipelineFailure.MaxTimeoutReached;
+        public Exception ThrowException()
         {
+            var exception = new Exception("Server is busy\nPlease Try again in a few Seconds");
+            return exception;
         }
     }
 }

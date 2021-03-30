@@ -7,7 +7,7 @@ namespace elasticsearch.model
         public string Name { get; set;}
         public string Content { get; set; }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             return obj is Doc doc && Name == doc.Name && Content == doc.Content;
         }

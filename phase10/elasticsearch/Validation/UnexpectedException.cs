@@ -1,12 +1,15 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    public class UnexpectedException : Exception
+    public abstract class UnexpectedException : IPipeLineException
     {
-        public UnexpectedException() : 
-            base("agha man ino aslan gardan nemigiram, chikar mikoni jan man??")
+        public PipelineFailure Name { get; } = PipelineFailure.Unexpected;
+        public Exception ThrowException()
         {
+            var exception = new Exception("agha man ino aslan gardan nemigiram, chikar mikoni jan man??");
+            return exception;
         }
     }
 }

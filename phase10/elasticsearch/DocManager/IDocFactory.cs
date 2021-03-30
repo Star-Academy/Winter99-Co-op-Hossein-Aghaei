@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using elasticsearch.model;
 
-namespace elasticsearch
+namespace elasticsearch.DocManager
 {
     public interface IDocFactory
     {

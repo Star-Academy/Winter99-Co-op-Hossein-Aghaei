@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Elasticsearch.Net;
+using elasticsearch.Validation;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public class Importer<T> where T : class
     {

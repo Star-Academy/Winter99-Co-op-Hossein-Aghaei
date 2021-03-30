@@ -2,11 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Castle.Core" Version="4.4.0" />
       <PackageReference Include="Elasticsearch.Net" Version="7.11.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0-preview.2.21154.6" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0-preview.2.21154.6" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0-preview.2.21154.6" />
       <PackageReference Include="NEST" Version="7.11.1" />
     </ItemGroup>
 
@@ -14,6 +17,13 @@
         <None Include="EnglishData\*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="appsettings.json" />
+      <Content Include="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

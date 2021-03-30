@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using elasticsearch.DocManager;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public class QueryCreator : IBoolQueryCreator
     {

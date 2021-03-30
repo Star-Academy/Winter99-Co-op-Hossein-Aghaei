@@ -2,7 +2,7 @@
 using System.Linq;
 using elasticsearch.model;
 
-namespace elasticsearch
+namespace elasticsearch.DocManager
 {
     public class DocFactory : IDocFactory
     {

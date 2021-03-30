@@ -1,12 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using elasticsearch.model;
 using Elasticsearch.Net;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
     public static class ResponseValidator
     {
+        private static readonly Dictionary<PipelineFailure, Exception> Errors = GetErrors();
+
+        private static Dictionary<PipelineFailure, Exception> GetErrors()
+        {
+            var pingFailures = Assembly.GetExecutingAssembly().GetTypes()
+                .Where(type => typeof(IPipeLineException).IsAssignableFrom(type))
+                .Where(type => !type.IsAbstract && !type.IsInterface && type.IsPublic)
+                .ToList();
+            var errors = pingFailures
+                .Select(pingFailure => 
+                    (IPipeLineException) Activator.CreateInstance(pingFailure)!)
+                .ToDictionary(exception => exception.Name,
+                    exception => exception.ThrowException());
+            return errors;
+        }
 
         public static T Validate<T>(this T response) where T : IResponse
         {
@@ -21,23 +39,18 @@ namespace elasticsearch
         {
             if (IsResponseValid(response))
                 return response;
-            if (response.OriginalException is ElasticsearchClientException exception)
-                CheckOriginalException(exception);
+            if (response.OriginalException is not ElasticsearchClientException exception) return response;
+            CheckOriginalException(exception);
             return response;
         }
 
         private static void CheckOriginalException(ElasticsearchClientException exception)
         {
-            throw exception.FailureReason switch
-            {
-                PipelineFailure.MaxTimeoutReached => new ServerTimeOutException(),
-                PipelineFailure.BadAuthentication => new BadAuthenticationException(),
-                PipelineFailure.BadResponse => new BadResponseException(),
-                PipelineFailure.BadRequest => new BadRequestException(),
-                PipelineFailure.MaxRetriesReached => new MaxRetriesException(),
-                PipelineFailure.Unexpected => new UnexpectedException(),
-                _ => new Exception("BBin chikar kardi ke residi be difault baad 7 khan case!!")
-            };
+            if (exception.FailureReason == null)
+                return;
+            if (Errors.ContainsKey((PipelineFailure) exception.FailureReason))
+                throw Errors[(PipelineFailure) exception.FailureReason];
+            throw new Exception("An UnKnown error occurred");
         }
 
         private static bool IsResponseValid(ISearchResponse<Doc> response)

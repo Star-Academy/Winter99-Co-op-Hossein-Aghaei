@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using elasticsearch.DocManager;
+using elasticsearch.SearchConnection;
 
 namespace elasticsearch
 {
@@ -29,24 +32,16 @@ namespace elasticsearch
 
         private static DocContainer SplitInputIntoSeparateDocs(string inputSentence)
         {
-            var noSignWords = "";
-            var plusSignWords = "";
-            var minusSignWords = "";
-            foreach (var word in inputSentence.Split())
-            {
-                if (!word.StartsWith("+") && !word.StartsWith("-"))
-                    noSignWords = $"{noSignWords} {word}";
-                if (word.StartsWith("+"))
-                    plusSignWords = $"{plusSignWords} {word.Substring(1)}";
-                if (word.StartsWith("-"))
-                    minusSignWords = $"{minusSignWords} {word.Substring(1)}";
-            }
-
+            var splitSentence = inputSentence.Split();
+            var noSignWords = splitSentence.Where(word
+                => !word.StartsWith("+") && !word.StartsWith("-"));
+            var plusSignWords = splitSentence.Where(word => word.StartsWith("+"));
+            var minusSignWords = splitSentence.Where(word => word.StartsWith("-"));
             var docContainer = new DocContainer
             {
-                NoSignWords = noSignWords.Trim(),
-                PlusSignWords = plusSignWords.Trim(),
-                MinusSignWords = minusSignWords.Trim()
+                NoSignWords = string.Join(' ' ,noSignWords),
+                PlusSignWords = string.Join(' ' ,plusSignWords),
+                MinusSignWords = string.Join(' ' ,minusSignWords)
             };
             return docContainer;
         }

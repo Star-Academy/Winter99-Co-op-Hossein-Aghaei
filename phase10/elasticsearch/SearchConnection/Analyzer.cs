@@ -1,4 +1,4 @@
-﻿namespace elasticsearch
+﻿namespace elasticsearch.SearchConnection
 {
     public static class Analyzer
     {

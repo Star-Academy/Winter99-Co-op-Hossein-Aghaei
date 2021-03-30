@@ -1,13 +1,17 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    public class BadRequestException : Exception
+    public abstract class BadRequestException : IPipeLineException
     {
-        public BadRequestException() : 
-            base("there is some bugs in request, fix then request again\n" +
-                 "Bikar nistim ma ke golam alaki mizani")
+
+        public PipelineFailure Name { get; } = PipelineFailure.BadRequest;
+        public Exception ThrowException()
         {
+            var exception = new Exception("there is some bugs in request, fix then request again\n" +
+                                          "Bikar nistim ma ke golam alaki mizani");
+            return exception;
         }
     }
 }

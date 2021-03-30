@@ -1,12 +1,16 @@
 ﻿using System;
+using Elasticsearch.Net;
 
-namespace elasticsearch
+namespace elasticsearch.Validation
 {
-    public class MaxRetriesException : Exception
+    public abstract class MaxRetriesException : IPipeLineException
     {
-        public MaxRetriesException() :
-            base("Mashti fek kon server khodete, kamtar request dede khoda vakili")
+
+        public PipelineFailure Name { get; } = PipelineFailure.MaxRetriesReached;
+        public Exception ThrowException()
         {
+            var exception = new Exception("Mashti fek kon server khodete, kamtar request dede khoda vakili");
+            return exception;
         }
     }
 }

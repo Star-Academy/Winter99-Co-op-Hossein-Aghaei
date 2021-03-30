@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using elasticsearch.DocManager;
 using elasticsearch.model;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public class Searcher : ISearch
     {
@@ -26,8 +27,6 @@ namespace elasticsearch
                 Index(_index).
                 Query(q => query).
                 Size(1000));
-            //response.Validate();
-            Console.WriteLine();
             return response.Documents.Select(doc => doc.Name).ToHashSet();
         }
 

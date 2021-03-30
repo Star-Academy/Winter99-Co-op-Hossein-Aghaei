@@ -1,7 +1,8 @@
 ﻿using elasticsearch.model;
+using elasticsearch.Validation;
 using Nest;
 
-namespace elasticsearch
+namespace elasticsearch.SearchConnection
 {
     public class IndexCreator 
     {
@@ -15,10 +16,9 @@ namespace elasticsearch
         public void CreateIndex(string indexName)
         {
             var response = _client.Indices.Create(indexName,
-                descriptor => descriptor.Settings(SetupSetting).
-                    Map<Doc>(SetupMapping));
+                descriptor => descriptor.Settings(SetupSetting)
+                    .Map<Doc>(SetupMapping));
             response.Validate();
-
         }
 
         private static ITypeMapping SetupMapping(TypeMappingDescriptor<Doc> typeMapping)
@@ -28,32 +28,33 @@ namespace elasticsearch
 
         private static IPromise<IProperties> SetupProperties(PropertiesDescriptor<Doc> properties)
         {
-            return properties.Keyword(k => k.
-                Name(doc => doc.Name)).
-                Text(t => t.
-                    Name(doc => doc.Content).
-                    Analyzer(Analyzer.CustomAnalyzer));
+            return properties.Keyword(k => k
+                    .Name(doc => doc.Name))
+                .Text(t => t
+                    .Name(doc => doc.Content)
+                    .Analyzer(Analyzer.CustomAnalyzer));
         }
 
         private static IPromise<IIndexSettings> SetupSetting(IndexSettingsDescriptor indexSettings)
         {
-            return indexSettings.
-                Setting("max_ngram_diff", 7).
-                Analysis(SetupAnalysis);
+            return indexSettings
+                .Setting("max_ngram_diff", 7)
+                .Analysis(SetupAnalysis);
         }
 
         private static IAnalysis SetupAnalysis(AnalysisDescriptor analysis)
         {
             return analysis.
-                TokenFilters(SetupTokenFilter).
-                Analyzers(SetupAnalyzer);
+                TokenFilters(SetupTokenFilter)
+                .Analyzers(SetupAnalyzer);
         }
 
         private static IPromise<IAnalyzers> SetupAnalyzer(AnalyzersDescriptor analyzersDescriptor)
         {
             return analyzersDescriptor.Custom(Analyzer.CustomAnalyzer,
-                s => s.Tokenizer(TokenFilter.Standard).
-                    Filters(TokenFilter.LowerCase, 
+                s => s
+                    .Tokenizer(TokenFilter.Standard)
+                    .Filters(TokenFilter.LowerCase, 
                         TokenFilter.WordDelimiter, 
                         TokenFilter.EnglishStopWords,
                         TokenFilter.NGram));
@@ -62,9 +63,9 @@ namespace elasticsearch
         private static IPromise<ITokenFilters> SetupTokenFilter(TokenFiltersDescriptor tokenFilters)
         {
             return tokenFilters.
-                NGram(TokenFilter.NGram, s => s.
-                    MinGram(3).
-                    MaxGram(10));
+                NGram(TokenFilter.NGram, s => s
+                    .MinGram(3)
+                    .MaxGram(10));
         }
     }
 } 
