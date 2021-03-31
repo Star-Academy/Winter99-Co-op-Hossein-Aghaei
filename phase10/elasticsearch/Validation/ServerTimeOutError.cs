@@ -3,7 +3,7 @@ using Elasticsearch.Net;
 
 namespace elasticsearch.Validation
 {
-    public abstract class ServerTimeOutException : IPipeLineException
+    public abstract class ServerTimeOutError : IPipeLineError
     {
         public PipelineFailure Name { get; } = PipelineFailure.MaxTimeoutReached;
         public Exception ThrowException()

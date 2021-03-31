@@ -15,14 +15,16 @@ namespace elasticsearch.Validation
         private static Dictionary<PipelineFailure, Exception> GetErrors()
         {
             var pingFailures = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(type => typeof(IPipeLineException).IsAssignableFrom(type))
+                .Where(type => typeof(IPipeLineError).IsAssignableFrom(type))
                 .Where(type => !type.IsAbstract && !type.IsInterface && type.IsPublic)
                 .ToList();
+
             var errors = pingFailures
-                .Select(pingFailure => 
-                    (IPipeLineException) Activator.CreateInstance(pingFailure)!)
+                .Select(pingFailure =>
+                    (IPipeLineError) Activator.CreateInstance(pingFailure)!)
                 .ToDictionary(exception => exception.Name,
                     exception => exception.ThrowException());
+
             return errors;
         }
 
@@ -48,9 +50,8 @@ namespace elasticsearch.Validation
         {
             if (exception.FailureReason == null)
                 return;
-            if (Errors.ContainsKey((PipelineFailure) exception.FailureReason))
-                throw Errors[(PipelineFailure) exception.FailureReason];
-            throw new Exception("An UnKnown error occurred");
+            throw Errors.GetValueOrDefault((PipelineFailure) exception.FailureReason,
+                new Exception("An UnKnown error occurred"));
         }
 
         private static bool IsResponseValid(ISearchResponse<Doc> response)

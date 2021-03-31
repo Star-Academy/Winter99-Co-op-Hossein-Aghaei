@@ -3,7 +3,7 @@ using Elasticsearch.Net;
 
 namespace elasticsearch.Validation
 {
-    public abstract class MaxRetriesException : IPipeLineException
+    public abstract class MaxRetriesError : IPipeLineError
     {
 
         public PipelineFailure Name { get; } = PipelineFailure.MaxRetriesReached;

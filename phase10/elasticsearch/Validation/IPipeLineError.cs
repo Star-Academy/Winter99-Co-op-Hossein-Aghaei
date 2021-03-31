@@ -3,7 +3,7 @@ using Elasticsearch.Net;
 
 namespace elasticsearch.Validation
 {
-    public interface IPipeLineException
+    public interface IPipeLineError
     {
         PipelineFailure Name { get; } 
         Exception ThrowException();

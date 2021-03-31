@@ -3,7 +3,7 @@ using Elasticsearch.Net;
 
 namespace elasticsearch.Validation
 {
-    public abstract class BadRequestException : IPipeLineException
+    public abstract class BadRequestError : IPipeLineError
     {
 
         public PipelineFailure Name { get; } = PipelineFailure.BadRequest;
